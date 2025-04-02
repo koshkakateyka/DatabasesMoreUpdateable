@@ -36,7 +36,7 @@ public class Main {
                 help           prints this information
                 exit           exists the program
                 """);
-//        switch (moreHelp) { default: System.out.println("HELP [command] \n\ncommand - displays help information on that command."); }
+
 
     }
     public static void main(String[] args) throws Exception {
@@ -45,20 +45,21 @@ public class Main {
         while (scanner.hasNext()) {
             String line = scanner.nextLine();
             System.out.println(line);
-            // на будущее себе for i for k array
-            if(line == "open") System.out.println();
-            else if (line == "close") System.out.println();
-            else if (line == "save") exit(scanner);
-            else if (line == "saveas") exit(scanner);
-            else if (line == "help open") System.out.println();
-            else if (line == "help close") exit(scanner);
-            else if (line == "help save") System.out.println();
-            else if (line == "help saveas") exit(scanner);
-            else if (line == "help help") System.out.println();
-            else if (line == "help exit") exit(scanner);
-            else if (line == "help") System.out.println();
-            else if (line == "exit") exit(scanner);
-            else System.out.println("Unknown command, for more information write this command:\n> help");
+            switch (line){
+                case "open": break;
+                case "close": break;
+                case "save": break;
+                case "saveas": break;
+                case "help": break;
+                case "exit": break;
+                case "help open": break;
+                case "help close": break;
+                case "help save": break;
+                case "help saveas": break;
+                case "help help": break;
+                case "help exit": break;
+                default: System.out.println("Unknown command, for more information write this command:\n> help"); break;
+            }
             System.out.print("> ");
         }
     }
