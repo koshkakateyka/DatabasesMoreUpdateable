@@ -1,26 +1,39 @@
+
 import java.util.Arrays;
 import java.util.Scanner;
-
+import java.io.File;
 public class Main {
-    public void fromCharToString(){
-
-    }
+    private static String fileName;
     public static void main(String[] args) {
+        // directory path
+        String dirPath = System.getProperty("user.dir");
+        // check existed files here
+        File directory = new File(dirPath);
+        File[] files = directory.listFiles();
+
+        if (files != null)
+            for (File file : files)
+                if (findXMLfile(file.getName()))
+                    System.out.println(file.getName());
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("> ");
         while (scanner.hasNext()) {
             String line = scanner.next();
             switch (line) {
-                case "open": break;
+                case "open":
+                    fileName = scanner.next();
+                    System.out.println(fileName);
+                    break;
                 case "close": break;
                 case "save": break;
                 case "saveas":
-                    String path = scanner.next();
-                    if(path.isEmpty()) {
+                    fileName = scanner.next();
+                    if(fileName.isEmpty()) {
                         System.out.println("saveas <file>");
                         break;
                     }
-                    char[] charArray1 = path.toCharArray();
+                    char[] charArray1 = fileName.toCharArray();
                     char[] charArray2 = { '.', 'x', 'm', 'l'};
                     for(int i = 0; i < charArray1.length; i++){
                         try {
@@ -30,7 +43,7 @@ public class Main {
                                         if (charArray1[i + 2] == 'm')
                                             if (charArray1[i + 3] == 'l') {
                                                 System.out.println("Successfully saved another " +
-                                                        path + "\n");
+                                                        fileName + "\n");
                                                 System.out.println(".xml is exist");
                                             }
                             }
@@ -67,4 +80,10 @@ public class Main {
         }
     }
 
+    public static boolean findXMLfile(String fileName){
+        if(fileName.endsWith(".xml"))
+            return true;
+        else
+            return false;
+    }
 }
