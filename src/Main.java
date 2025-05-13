@@ -1,9 +1,11 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Objects;
-import java.util.Scanner;
-import java.io.File;
+//import java.io.BufferedReader;
+//import java.io.IOException;
+//import java.io.InputStreamReader;
+//import java.util.Objects;
+//import java.util.Scanner;
+//import java.io.File;
+import java.io.*;
+
 
 // another class
 
@@ -19,9 +21,12 @@ import java.io.File;
 //        keyboardReader.display(inputString + '\n');
 //        cmdline.display(m);
 
+// https://docs.oracle.com/javase/tutorial/essential/io/index.html
 public class Main {
-    public static void main(final String... arguments) throws IOException {
+    public static void main(String[] args) throws IOException {
 
+        FileInputStream in = null;
+        FileOutputStream out = null;
 
         // variant 1
         //BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -35,6 +40,8 @@ public class Main {
         //keyboardReader.display("string");
 
         keyboardReader.display(keyboardReader.getKeyboardInput());
+
+        CopyBytes copyBytes = new CopyBytes();
 
 
     }
