@@ -5,8 +5,7 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.io.File;
 
-public class Main {
-    public static void main(final String... arguments) throws IOException {
+// another class
 
 //        // for strings
 //        KeyboardReader keyboardReader = new KeyboardReader();
@@ -20,10 +19,22 @@ public class Main {
 //        keyboardReader.display(inputString + '\n');
 //        cmdline.display(m);
 
-        KeyboardReader keyboardReader = new KeyboardReader();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+public class Main {
+    public static void main(final String... arguments) throws IOException {
 
-        keyboardReader.display(keyboardReader.readKeyboard());
+
+        // variant 1
+        //BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        // variant 2
+        KeyboardReader keyboardReader = new KeyboardReader();
+
+        // for remember
+        //  input
+        //keyboardReader.getKeyboardInput();
+        //  output
+        //keyboardReader.display("string");
+
+        keyboardReader.display(keyboardReader.getKeyboardInput());
 
 
     }
