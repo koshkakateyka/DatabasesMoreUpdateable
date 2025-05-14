@@ -1,70 +1,50 @@
-//import java.io.BufferedReader;
-//import java.io.IOException;
-//import java.io.InputStreamReader;
-//import java.util.Objects;
-//import java.util.Scanner;
-//import java.io.File;
-
-// https://docs.oracle.com/javase/tutorial/essential/io/index.html
 import java.io.*;
 
-
-// another class
-
-//        // for strings
-//        KeyboardReader keyboardReader = new KeyboardReader();
-//        String inputString = keyboardReader.getKeyboardInput();
-//
-//        // for integers
-//        KeyboardReader cmdline = new KeyboardReader();
-//        int m = cmdline.getKeyboardInteger();
-//
-//
-//        keyboardReader.display(inputString + '\n');
-//        cmdline.display(m);
-
-
-
-// https://docs.oracle.com/javase/tutorial/essential/io/bytestreams.html
 public class Main {
-    public static void main(String[] args) throws IOException, RuntimeException {
+    public static void main(String[] args) throws IOException {
+        String fileName = "example.txt";
+        String text = "text";
 
-        FileInputStream in = null;
-        FileOutputStream out = null;
+        // выглядит идеально здесь, даже название
+        CreateTheFile createTheFile = new CreateTheFile(text, fileName);
+        createTheFile.saveTheFile();
 
-        
+        FileReader fileReader;
+        FileWriter fileWriter;
+        int ch;
+        try{
+            fileReader = new FileReader("example.txt");
+            fileWriter = new FileWriter("output.txt");
 
-        try {
-            in = new FileInputStream("xanadu.txt");
-            out = new FileOutputStream("outagain.txt");
-            int c;
-
-            while ((c = in.read()) != -1) {
-                out.write(c);
+            while ((ch = fileReader.read()) != 1){
+                // ch - variable, only for readOnly
+                fileWriter.write(ch);
             }
-        } finally {
-            if (in != null) {
-                in.close();
-            }
-            if (out != null) {
-                out.close();
-            }
+
+            fileReader.close();
+            fileWriter.close();
+            System.out.println("File " + fileName + " closed correctly");
+        }catch (IOException e){
+            System.err.println("File " + fileName + " isn't closed, the error is: " + e);
+            e.printStackTrace();
         }
 
-        // variant 1
-        //BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        // variant 2
-        KeyboardReader keyboardReader = new KeyboardReader();
+        BufferedReader bufferedReader;
+        PrintWriter printWriter;
+        String line;
+        try{
+            bufferedReader = new BufferedReader(new FileReader(fileName));
+            printWriter = new PrintWriter(new FileWriter(fileName));
 
-        // for remember
-        //  input
-        //keyboardReader.getKeyboardInput();
-        //  output
-        //keyboardReader.display("string");
+            while ((line = bufferedReader.readLine()) != null) {
+                printWriter.write(line);
+            }
 
-        keyboardReader.display(keyboardReader.getKeyboardInput());
-
-        CopyBytes copyBytes = new CopyBytes();
+            bufferedReader.close();
+            printWriter.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }
