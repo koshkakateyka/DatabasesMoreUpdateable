@@ -4,6 +4,8 @@
 //import java.util.Objects;
 //import java.util.Scanner;
 //import java.io.File;
+
+// https://docs.oracle.com/javase/tutorial/essential/io/index.html
 import java.io.*;
 
 
@@ -21,13 +23,17 @@ import java.io.*;
 //        keyboardReader.display(inputString + '\n');
 //        cmdline.display(m);
 
-// https://docs.oracle.com/javase/tutorial/essential/io/index.html
+
+
+// https://docs.oracle.com/javase/tutorial/essential/io/bytestreams.html
 public class Main {
     public static void main(String[] args) throws IOException, RuntimeException {
 
         FileInputStream in = null;
         FileOutputStream out = null;
+
         
+
         try {
             in = new FileInputStream("xanadu.txt");
             out = new FileOutputStream("outagain.txt");
