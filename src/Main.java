@@ -23,10 +23,25 @@ public class Main {
             // here i use it: for(i)for(j)if(firstWord[0] == secondWord[j]), combinational check
             for (int i = 0; i < conversionLine.countOfWords(); i++){
                 for (int j = 0; j < sequenceOfCommands.length; j++)
+
+                    // THE BUG IS HERE, DOUBLE WORK, IF YOU WRITE JUST:
+                    // open open
+                    // the result:
+                    // true
+                    // true
+                    //
+                    // but should be only once:
+                    // true
+                    //
+
+                    // потому-что у тебя слова раздельно работают, вот и проблема, было бы вместе, был бы другой
+                    // разговор
+
+                    // тоже мне ещё проблема, которую надо будет как нибудь решить, с проверкой фулл предложения
+                    // на начальное слово, вот это вот сложно уже реализовать
+                    // потому-что выглядит уже как рефакторинг всего этого кода, увы
                     if(conversionLine.trimPlusSplit(0).equals(sequenceOfCommands[j])){
                         System.out.println("true");
-                    }else{
-                        System.out.println("false");
                     }
 
 
