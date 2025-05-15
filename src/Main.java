@@ -2,18 +2,26 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         // write the full sentence, for out command line
         Scanner scanner = new Scanner(System.in);
 
+        // main loop of cmd work
         while (true) {
+
             // for command line
-            String myFullSentence = scanner.nextLine();
+            String line = scanner.nextLine();
+            ConversionLine cLine = new ConversionLine(line);
 
-            SentenceConvert sentenceConvert = new SentenceConvert(myFullSentence);
-
-            for (int i = 0; i < sentenceConvert.lenght(); i++)
-                System.out.println(sentenceConvert.trimPlusSplit(i));
+            // class philosophy, looks like perfectionism
+            for (int i = 0; i < cLine.lenghtOfWords(); i++){
+                
+                // hard interpreter it, but okay
+                String cmdTokens = cLine.trimPlusSplit(i);
+                System.out.println(cmdTokens);
+            }
         }
+
     }
 
 
