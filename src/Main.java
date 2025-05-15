@@ -1,21 +1,25 @@
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String[] sequenceOfCommands = {"open", "close", "save", "saveas", "help", "exit"};
+
+        String first = null;
+        String second = null;
         boolean open = false;
+        boolean saveas = false;
 
         // main loop of cmd work
         while (true) {
             String line = scanner.nextLine();
-            ConversionLine conversionLine = new ConversionLine(line);
+            AdvancedLine aLine = new AdvancedLine(line);
 
 //            for(int i = 0; i < conversionLine.countOfWords(); i++){
-            if(conversionLine.trimPlusSplit(0).equals("open")){
+            if(aLine.index(0).equals("open")){
                 System.out.println("opened");
                 open = true;
-            } else if (conversionLine.trimPlusSplit(0).equals("close")) {
+            } else if (aLine.index(0).equals("close")) {
                 if(open == true){
                     System.out.println("closed");
                     open = false;
@@ -23,18 +27,17 @@ public class Main {
                 else {
                     System.out.println("You didn't open anything, nothing for close");
                 }
-            } else if (conversionLine.trimPlusSplit(0).equals("save")) {
+            } else if (aLine.index(0).equals("save")) {
                 System.out.println("saved");
-            } else if (conversionLine.trimPlusSplit(0).equals("saveas")) {
+            } else if (aLine.index(0).equals("saveas")) {
                 System.out.println("saved as");
-                for (int i = 1; i < conversionLine.countOfWords(); i++){
-                    String fileDirrect = conversionLine.trimPlusSplit(i);
+                for (int i = 1; i < aLine.countOfWords(); i++){
+                    String fileDirrect = aLine.index(i);
                     System.out.println(fileDirrect);
                 }
-
-            } else if (conversionLine.trimPlusSplit(0).equals("help")) {
+            } else if (aLine.index(0).equals("help")) {
                 System.out.println("helped");
-            } else if (conversionLine.trimPlusSplit(0).equals("exit")) {
+            } else if (aLine.index(0).equals("exit")) {
                 System.out.println("exited");
                 System.exit(0);
             }
