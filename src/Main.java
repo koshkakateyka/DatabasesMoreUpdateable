@@ -5,14 +5,15 @@ public class Main {
         // write the full sentence, for out command line
         Scanner scanner = new Scanner(System.in);
 
-        // for command line
-        String myFullSentence = scanner.nextLine();
+        while (true) {
+            // for command line
+            String myFullSentence = scanner.nextLine();
 
-        SentenceConvert sentenceConvert = new SentenceConvert(myFullSentence);
+            SentenceConvert sentenceConvert = new SentenceConvert(myFullSentence, 0);
 
-        for (int i = 0; i < sentenceConvert.lenght(); i++)
-            System.out.println(sentenceConvert.trimPlusSplit());
-
+            for (int i = 0; i < sentenceConvert.lenght(); i++)
+                System.out.println(sentenceConvert.trimPlusSplit(i));
+        }
     }
 
 

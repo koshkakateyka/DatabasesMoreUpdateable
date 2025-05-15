@@ -1,10 +1,9 @@
 import java.util.StringTokenizer;
 
 public class SentenceConvert {
-    private int index = 0;
     private String str;
 
-    SentenceConvert(String str){
+    SentenceConvert(String str, int index){
         this.str = str;
     }
 
@@ -18,11 +17,14 @@ public class SentenceConvert {
     }
 
     // https://stackoverflow.com/questions/7899525/how-to-split-a-string-by-space
-    public String trimPlusSplit(){
+    public String trimPlusSplit(int index){
         // trim + split = delete no needed spaces
         // and divide our whole sentence to the every single word
         String[] splitStr = str.trim().split("\\s+");
 
         return splitStr[index];
     }
+
+
+
 }
