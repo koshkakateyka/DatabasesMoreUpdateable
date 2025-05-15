@@ -15,8 +15,8 @@ public class Main {
 
             // class philosophy, looks like perfectionism
             for (int i = 0; i < cLine.lenghtOfWords(); i++){
-                
-                // hard interpreter it, but okay
+
+                // hard interpret it, but okay
                 String cmdTokens = cLine.trimPlusSplit(i);
                 System.out.println(cmdTokens);
             }
