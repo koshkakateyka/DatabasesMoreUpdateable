@@ -3,7 +3,7 @@ import java.util.StringTokenizer;
 public class SentenceConvert {
     private String str;
 
-    SentenceConvert(String str, int index){
+    SentenceConvert(String str){
         this.str = str;
     }
 

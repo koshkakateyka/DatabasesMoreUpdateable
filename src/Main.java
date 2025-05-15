@@ -9,7 +9,7 @@ public class Main {
             // for command line
             String myFullSentence = scanner.nextLine();
 
-            SentenceConvert sentenceConvert = new SentenceConvert(myFullSentence, 0);
+            SentenceConvert sentenceConvert = new SentenceConvert(myFullSentence);
 
             for (int i = 0; i < sentenceConvert.lenght(); i++)
                 System.out.println(sentenceConvert.trimPlusSplit(i));
