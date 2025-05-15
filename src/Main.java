@@ -27,10 +27,11 @@ public class Main {
                 System.out.println("saved");
             } else if (conversionLine.trimPlusSplit(0).equals("saveas")) {
                 System.out.println("saved as");
-                String fileDirrect = conversionLine.trimPlusSplit(1);
-                System.out.println(fileDirrect);
-                fileDirrect = conversionLine.trimPlusSplit(2);
-                System.out.println(fileDirrect);
+                for (int i = 1; i < conversionLine.countOfWords(); i++){
+                    String fileDirrect = conversionLine.trimPlusSplit(i);
+                    System.out.println(fileDirrect);
+                }
+
             } else if (conversionLine.trimPlusSplit(0).equals("help")) {
                 System.out.println("helped");
             } else if (conversionLine.trimPlusSplit(0).equals("exit")) {
