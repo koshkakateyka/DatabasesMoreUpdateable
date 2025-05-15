@@ -2,22 +2,36 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); // for "cin >>"
+
+        // array of commands, it is very needed, for check... like combinational check
+        // firstWord[0] == "open";
+        // firstWord[1] == "open";
+        // ...
+        // firstWord[5] == "open";
+        // if it is true, we pass it
+        /// use it on the: for(i)for(j)if(firstWord[0] == "open")
+        // bad explained, just: for(i)for(j)if(firstWord[0] == secondWord[j])
+        String[] sequenceOfCommands = {"open", "close", "save", "saveas", "help", "exit"};
+
 
         // main loop of cmd work
         while (true) {
-
-            // sentence for command line
             String line = scanner.nextLine();
-            ConversionLine cLine = new ConversionLine(line);
+            ConversionLine conversionLine = new ConversionLine(line);
 
-            // class philosophy, looks like perfectionism
-            for (int i = 0; i < cLine.countOfWords(); i++){
+            // here i use it: for(i)for(j)if(firstWord[0] == secondWord[j]), combinational check
+            for (int i = 0; i < conversionLine.countOfWords(); i++){
+                for (int j = 0; j < sequenceOfCommands.length; j++)
+                    if(conversionLine.trimPlusSplit(0).equals(sequenceOfCommands[j])){
+                        System.out.println("true");
+                    }else{
+                        System.out.println("false");
+                    }
 
-                // hard interpret it, but okay
-                String cmdTokens = cLine.trimPlusSplit(i);
-                System.out.println(cmdTokens);
+
             }
+
         }
 
     }
