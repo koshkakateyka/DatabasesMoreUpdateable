@@ -13,7 +13,8 @@ public class Main {
         /// use it on the: for(i)for(j)if(firstWord[0] == "open")
         // bad explained, just: for(i)for(j)if(firstWord[0] == secondWord[j])
         String[] sequenceOfCommands = {"open", "close", "save", "saveas", "help", "exit"};
-
+        boolean switcher = false;
+        int j = 0;
 
         // main loop of cmd work
         while (true) {
@@ -21,33 +22,16 @@ public class Main {
             ConversionLine conversionLine = new ConversionLine(line);
 
             // here i use it: for(i)for(j)if(firstWord[0] == secondWord[j]), combinational check
-            for (int i = 0; i < conversionLine.countOfWords(); i++){
-                for (int j = 0; j < sequenceOfCommands.length; j++)
-
-                    // THE BUG IS HERE, DOUBLE WORK, IF YOU WRITE JUST:
-                    // open open
-                    // the result:
-                    // true
-                    // true
-                    //
-                    // but should be only once:
-                    // true
-                    //
-
-                    // потому-что у тебя слова раздельно работают, вот и проблема, было бы вместе, был бы другой
-                    // разговор
-
-                    // тоже мне ещё проблема, которую надо будет как нибудь решить, с проверкой фулл предложения
-                    // на начальное слово, вот это вот сложно уже реализовать
-                    // потому-что выглядит уже как рефакторинг всего этого кода, увы
-                    if(conversionLine.trimPlusSplit(0).equals(sequenceOfCommands[j])){
-                        System.out.println("true");
-                    }
-
-
-            }
-
+            do{
+                if(conversionLine.trimPlusSplit(0).equals(sequenceOfCommands[j])){
+                    System.out.println("true");
+                    switcher = true;
+                }
+                j++;
+            }while(switcher == false || j < sequenceOfCommands.length);
+            j = 0;
         }
+
 
     }
 
@@ -81,7 +65,12 @@ public class Main {
 
 
 
-
+//                        do{
+//                            if(conversionLine.trimPlusSplit(0).equals(sequenceOfCommands[j])){
+//                                System.out.println("true");
+//                                switcher = true;
+//                            }
+//                        }while(switcher != true || i < conversionLine.countOfWords() && j < sequenceOfCommands.length);
 //    public static String idk(){
 //        StringTokenizer tokens = new StringTokenizer("Hello I'm your String", " ");
 //        String[] splited = new String[tokens.countTokens()];
