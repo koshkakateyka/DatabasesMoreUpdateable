@@ -9,8 +9,6 @@ public class Main {
 
         for (int i = 0; i < count(commanda); i++)
             System.out.println(trimPLUSsplit(i, commanda));
-
-//        functione(scanner.nextLine());
     }
 
     // https://stackoverflow.com/questions/7899525/how-to-split-a-string-by-space
@@ -22,18 +20,13 @@ public class Main {
         return tokens.countTokens();
     }
 
+    // https://stackoverflow.com/questions/7899525/how-to-split-a-string-by-space
     public static String trimPLUSsplit(int index, String str){
-
-
         // trim + split = delete no needed spaces
         // and divide our whole sentence to the every single word
         String[] splitStr = str.trim().split("\\s+");
 
         return splitStr[index];
-
-//        // now, we have a good and checked words for put our words - to the command line
-//        for(int i = 0; i < tokens.countTokens(); i++)
-//            System.out.println(splitStr[i]);
     }
 
 }
