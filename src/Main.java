@@ -5,8 +5,10 @@ public class Main {
     public static void main(String[] args) {
         // write the full sentence, for out command line
         Scanner scanner = new Scanner(System.in);
+        String commanda = scanner.nextLine();
 
-        for (int i = 0; i < count(scanner.nextLine()); i++)
+        for (int i = 0; i < count(commanda); i++)
+            System.out.println(trimPLUSsplit(i, commanda));
 
 //        functione(scanner.nextLine());
     }
@@ -20,14 +22,14 @@ public class Main {
         return tokens.countTokens();
     }
 
-    public static void trimPLUSsplit(String str){
+    public static String trimPLUSsplit(int index, String str){
 
 
         // trim + split = delete no needed spaces
         // and divide our whole sentence to the every single word
         String[] splitStr = str.trim().split("\\s+");
 
-        return splitStr;
+        return splitStr[index];
 
 //        // now, we have a good and checked words for put our words - to the command line
 //        for(int i = 0; i < tokens.countTokens(); i++)
