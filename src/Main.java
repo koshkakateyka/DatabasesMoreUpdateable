@@ -11,29 +11,33 @@ public class Main {
             String line = scanner.nextLine();
             ConversionLine conversionLine = new ConversionLine(line);
 
-            for(int i = 0; i < conversionLine.countOfWords(); i++){
-                if(conversionLine.trimPlusSplit(i).equals("open")){
-                    System.out.println("opened");
-                    open = true;
-                } else if (conversionLine.trimPlusSplit(i).equals("close")) {
-                    if(open == true){
-                        System.out.println("closed");
-                        open = false;
-                    }
-                    else {
-                        System.out.println("You didn't open anything, nothing for close");
-                    }
-                } else if (conversionLine.trimPlusSplit(i).equals("save")) {
-                    System.out.println("saved");
-                } else if (conversionLine.trimPlusSplit(i).equals("saveas")) {
-                    System.out.println("saved as");
-                } else if (conversionLine.trimPlusSplit(i).equals("help")) {
-                    System.out.println("helped");
-                } else if (conversionLine.trimPlusSplit(i).equals("exit")) {
-                    System.out.println("exited");
-                    System.exit(0);
+//            for(int i = 0; i < conversionLine.countOfWords(); i++){
+            if(conversionLine.trimPlusSplit(0).equals("open")){
+                System.out.println("opened");
+                open = true;
+            } else if (conversionLine.trimPlusSplit(0).equals("close")) {
+                if(open == true){
+                    System.out.println("closed");
+                    open = false;
                 }
+                else {
+                    System.out.println("You didn't open anything, nothing for close");
+                }
+            } else if (conversionLine.trimPlusSplit(0).equals("save")) {
+                System.out.println("saved");
+            } else if (conversionLine.trimPlusSplit(0).equals("saveas")) {
+                System.out.println("saved as");
+                String fileDirrect = conversionLine.trimPlusSplit(1);
+                System.out.println(fileDirrect);
+                fileDirrect = conversionLine.trimPlusSplit(2);
+                System.out.println(fileDirrect);
+            } else if (conversionLine.trimPlusSplit(0).equals("help")) {
+                System.out.println("helped");
+            } else if (conversionLine.trimPlusSplit(0).equals("exit")) {
+                System.out.println("exited");
+                System.exit(0);
             }
+//            }
         }
     }
 }
