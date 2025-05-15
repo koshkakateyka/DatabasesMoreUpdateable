@@ -2,41 +2,39 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in); // for "cin >>"
-
-        // array of commands, it is very needed, for check... like combinational check
-        // firstWord[0] == "open";
-        // firstWord[1] == "open";
-        // ...
-        // firstWord[5] == "open";
-        // if it is true, we pass it
-        /// use it on the: for(i)for(j)if(firstWord[0] == "open")
-        // bad explained, just: for(i)for(j)if(firstWord[0] == secondWord[j])
+        Scanner scanner = new Scanner(System.in);
         String[] sequenceOfCommands = {"open", "close", "save", "saveas", "help", "exit"};
-        boolean switcher = false;
-        int j = 0;
 
         // main loop of cmd work
         while (true) {
             String line = scanner.nextLine();
             ConversionLine conversionLine = new ConversionLine(line);
 
-            // here i use it: for(i)for(j)if(firstWord[0] == secondWord[j]), combinational check
-            do{
-                if(conversionLine.trimPlusSplit(0).equals(sequenceOfCommands[j])){
-                    System.out.println("true");
-                    switcher = true;
+            for(int i = 0; i < conversionLine.countOfWords(); i++){
+                if(conversionLine.trimPlusSplit(i).equals("open")){
+                    System.out.println("opened");
+                } else if (conversionLine.trimPlusSplit(i).equals("close")) {
+                    System.out.println("closed");
+                } else if (conversionLine.trimPlusSplit(i).equals("save")) {
+                    System.out.println("saved");
+                } else if (conversionLine.trimPlusSplit(i).equals("saveas")) {
+                    System.out.println("saved as");
+                } else if (conversionLine.trimPlusSplit(i).equals("help")) {
+                    System.out.println("helped");
+                } else if (conversionLine.trimPlusSplit(i).equals("exit")) {
+                    System.out.println("exited");
                 }
-                j++;
-            }while(switcher == false || j < sequenceOfCommands.length);
-            j = 0;
+
+            }
+
         }
-
-
     }
-
-
-
+    public static boolean compare(String First, String Second){
+        if(First.equals(Second)){
+            return true;
+        }
+        return false;
+    }
 }
 
 
