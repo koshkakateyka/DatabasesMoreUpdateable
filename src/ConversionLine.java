@@ -8,7 +8,7 @@ public class ConversionLine {
     }
 
     // https://stackoverflow.com/questions/7899525/how-to-split-a-string-by-space
-    public int lenghtOfWords(){
+    public int countOfWords(){
         // counting an every single word
         // actually, needs only for counting
         StringTokenizer tokens = new StringTokenizer(str, " ");

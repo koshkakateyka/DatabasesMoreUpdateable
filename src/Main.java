@@ -2,19 +2,17 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-        // write the full sentence, for out command line
         Scanner scanner = new Scanner(System.in);
 
         // main loop of cmd work
         while (true) {
 
-            // for command line
+            // sentence for command line
             String line = scanner.nextLine();
             ConversionLine cLine = new ConversionLine(line);
 
             // class philosophy, looks like perfectionism
-            for (int i = 0; i < cLine.lenghtOfWords(); i++){
+            for (int i = 0; i < cLine.countOfWords(); i++){
 
                 // hard interpret it, but okay
                 String cmdTokens = cLine.trimPlusSplit(i);
