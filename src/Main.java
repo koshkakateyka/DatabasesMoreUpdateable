@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String[] sequenceOfCommands = {"open", "close", "save", "saveas", "help", "exit"};
+        boolean open = false;
 
         // main loop of cmd work
         while (true) {
@@ -13,8 +14,15 @@ public class Main {
             for(int i = 0; i < conversionLine.countOfWords(); i++){
                 if(conversionLine.trimPlusSplit(i).equals("open")){
                     System.out.println("opened");
+                    open = true;
                 } else if (conversionLine.trimPlusSplit(i).equals("close")) {
-                    System.out.println("closed");
+                    if(open == true){
+                        System.out.println("closed");
+                        open = false;
+                    }
+                    else {
+                        System.out.println("You didn't open anything, nothing for close");
+                    }
                 } else if (conversionLine.trimPlusSplit(i).equals("save")) {
                     System.out.println("saved");
                 } else if (conversionLine.trimPlusSplit(i).equals("saveas")) {
@@ -23,17 +31,10 @@ public class Main {
                     System.out.println("helped");
                 } else if (conversionLine.trimPlusSplit(i).equals("exit")) {
                     System.out.println("exited");
+                    System.exit(0);
                 }
-
             }
-
         }
-    }
-    public static boolean compare(String First, String Second){
-        if(First.equals(Second)){
-            return true;
-        }
-        return false;
     }
 }
 
