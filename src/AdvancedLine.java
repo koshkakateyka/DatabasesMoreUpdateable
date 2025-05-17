@@ -1,7 +1,3 @@
-// change this shit please: import java.util.StringTokenizer
-// to BufferStream
-import java.util.StringTokenizer;
-
 public class AdvancedLine {
     private String str;
 
@@ -13,9 +9,9 @@ public class AdvancedLine {
     public int countOfWords(){
         // counting an every single word
         // actually, needs only for counting
-        StringTokenizer tokens = new StringTokenizer(str, " ");
+        String[] splitStr = str.trim().split("\\s+");
 
-        return tokens.countTokens();
+        return splitStr.length;
     }
 
     // https://stackoverflow.com/questions/7899525/how-to-split-a-string-by-space

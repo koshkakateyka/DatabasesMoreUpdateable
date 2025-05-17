@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // beside Scanner, the same things are here
         KeyboardReader keyboardReader = new KeyboardReader();
 
         // main loop of cmd work
