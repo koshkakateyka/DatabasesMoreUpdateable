@@ -28,10 +28,12 @@ public class Main {
                     arrayList.add(aLine.index(i));
 
                 // https://docs.vultr.com/java/standard-library/java/lang/String/join
-                String result = String.join(" ", arrayList);
-                System.out.println(result);
+                String filePath = String.join(" ", arrayList);
+                System.out.println(filePath);
 
                 // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
+                OpenFile openFile = new OpenFile(filePath);
+                openFile.load();
 
 
             }
@@ -56,11 +58,13 @@ public class Main {
                 for(int i = 1; i < aLine.countOfWords(); i++)
                     arrayList.add(aLine.index(i));
 
+
                 // https://docs.vultr.com/java/standard-library/java/lang/String/join
                 String result = String.join(" ", arrayList);
                 System.out.println(result);
 
                 // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
+
             }
             // help logic
             else if (aLine.index(0).equals("help")) {
