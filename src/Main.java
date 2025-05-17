@@ -3,16 +3,23 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        String[] a;
 
         // main loop of cmd work
         while (true) {
             String line = scanner.nextLine();
             AdvancedLine aLine = new AdvancedLine(line);
 
-            if(aLine.index(0).equals("open")){
+            // StringBuilder append() Method in Java(((
+            // i wanna use another method
+            if(aLine.index(0).equals("open"))
                 for(int i = 1; i < aLine.countOfWords(); i++)
-                    System.out.println(aLine.index(i));
-            }
+                    if(aLine.countOfWords() < 2)
+                        System.out.println(aLine.index(i));
+                    else
+                        System.out.println(aLine.index(i));
+
+
         }
     }
 }
