@@ -5,18 +5,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class OpenFile {
-    private String filePath;
-
+    private ArrayList<String> arrayList = new ArrayList<>();
+//
+//    OpenFile(String filePath){
+//        this.filePath = filePath;
+//    }
     OpenFile(String filePath){
-        this.filePath = filePath;
-    }
-
-    public void output(/*int iindex*/){
-        BufferedReader bufferedReader;
-        ArrayList<String> arrayList = new ArrayList<>();
-
-        String data;
         try{
+            BufferedReader bufferedReader;
+            String data;
             bufferedReader = new BufferedReader(new FileReader(filePath));
 
             while ((data = bufferedReader.readLine()) != null){
@@ -24,10 +21,15 @@ public class OpenFile {
 //                arrayList.add()
 //                return data[iindex];
             }
+
             bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void output(/*int iindex*/){
+
     }
 
 }
