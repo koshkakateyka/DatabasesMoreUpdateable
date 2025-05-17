@@ -27,7 +27,10 @@ public class Main {
                     arrayList.add(aLine.index(i));
 
                 // https://docs.vultr.com/java/standard-library/java/lang/String/join
-                String filePath = String.join(" ", arrayList);
+                // never use one quote like that: open 'filePath'
+                String filePath = String.join(" ", arrayList).replaceAll("\"","");
+
+                System.out.println(filePath);
 
                 // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
                 OpenFile openFile = new OpenFile(filePath);
@@ -58,12 +61,18 @@ public class Main {
                 for(int i = 1; i < aLine.countOfWords(); i++)
                     arrayList.add(aLine.index(i));
 
-
                 // https://docs.vultr.com/java/standard-library/java/lang/String/join
-                String result = String.join(" ", arrayList);
-                System.out.println(result);
+                // never use one quote like that: open 'filePath'
+                String filePath = String.join(" ", arrayList).replaceAll("\"","");
+
+                System.out.println(filePath);
 
                 // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
+                OpenFile openFile = new OpenFile(filePath);
+                /*String data =*/ openFile.output();
+
+//                System.out.println(data);
+
 
             }
             // help logic
