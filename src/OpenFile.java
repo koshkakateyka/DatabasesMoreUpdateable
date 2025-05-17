@@ -24,7 +24,7 @@ public class OpenFile {
 
             bufferedReader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Can't open/find this file: " + filePath);
         }
     }
 
