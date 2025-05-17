@@ -29,7 +29,6 @@ public class Main {
 
                 // https://docs.vultr.com/java/standard-library/java/lang/String/join
                 String filePath = String.join(" ", arrayList);
-                System.out.println(filePath);
 
                 // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
                 OpenFile openFile = new OpenFile(filePath);

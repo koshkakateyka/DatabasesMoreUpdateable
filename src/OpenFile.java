@@ -1,5 +1,6 @@
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class OpenFile {
@@ -10,15 +11,16 @@ public class OpenFile {
     }
 
     public void load(){
-        FileReader fileReader;
-        int ch;
-        try{
-            fileReader = new FileReader(filePath);
+        BufferedReader bufferedReader;
 
-            while ((ch = fileReader.read()) != -1){
-                System.out.print(ch);
+        String line;
+        try{
+            bufferedReader = new BufferedReader(new FileReader(filePath));
+
+            while ((line = bufferedReader.readLine()) != null){
+                System.out.println(line);
             }
-            fileReader.close();
+            bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
