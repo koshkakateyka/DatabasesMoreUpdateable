@@ -4,17 +4,18 @@ public class Main {
     public static void main(String[] args) {
         // beside Scanner, the same things are here
         KeyboardReader keyboardReader = new KeyboardReader();
+        boolean open = false;
+        String filePath = "";
 
         // main loop of cmd work
         while (true) {
             String line = keyboardReader.getKeyboardInput();
             AdvancedLine aLine = new AdvancedLine(line);
 
-            boolean lock = false;
-
             // after all, i wanna add Class MyCmd here
             // open logic
             if(aLine.index(0).equals("open")){
+                open = true;
                 // for concatinate
                 // fo example:
                 // input = open "C:\Temp\another
@@ -28,7 +29,7 @@ public class Main {
 
                 // https://docs.vultr.com/java/standard-library/java/lang/String/join
                 // never use one quote like that: open 'filePath'
-                String filePath = String.join(" ", arrayList).replaceAll("\"","");
+                filePath = String.join(" ", arrayList).replaceAll("\"","");
 
                 System.out.println(filePath);
 
@@ -41,8 +42,18 @@ public class Main {
 
             }
             // close logic
-            else if (aLine.index(0).equals("close")) {
-                
+            else if (open == true) {
+                if (aLine.index(0).equals("close")) {
+                    // save the data and close(like, you can't use again opened file, because you are close the file)
+                    // some logic here about close,
+                    System.out.println("Successfully closed " + filePath);
+                }
+            }
+            else if (open == false){
+                System.out.println("You can't close any file, because you never open anything, use it first:" + "\n" +
+                        "open <file>" + "\n" +
+                        "then: " + "\n" +
+                        "close" + "\n");
             }
             // save logic
             else if (aLine.index(0).equals("save")) {
@@ -63,7 +74,7 @@ public class Main {
 
                 // https://docs.vultr.com/java/standard-library/java/lang/String/join
                 // never use one quote like that: open 'filePath'
-                String filePath = String.join(" ", arrayList).replaceAll("\"","");
+                filePath = String.join(" ", arrayList).replaceAll("\"","");
 
                 System.out.println(filePath);
 

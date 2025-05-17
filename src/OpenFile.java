@@ -24,7 +24,8 @@ public class OpenFile {
 
             bufferedReader.close();
         } catch (IOException e) {
-            System.out.println("Can't open/find this file: " + filePath);
+            // i can't write the name of file, only the path
+            System.out.println("Can't open/find this path: " + filePath);
         }
     }
 
