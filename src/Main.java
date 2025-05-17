@@ -3,31 +3,79 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        // for concatinate
-        // fo example:
-        // input = open "C:\Temp\another
-        // but we lost file.xml"
-        // so, here is why i use ArrayList
-        // https://www.programiz.com/java-programming/arraylist
-        ArrayList<String> arrayList = new ArrayList<>();
+        KeyboardReader keyboardReader = new KeyboardReader();
 
         // main loop of cmd work
         while (true) {
-            String line = scanner.nextLine();
+            String line = keyboardReader.getKeyboardInput();
             AdvancedLine aLine = new AdvancedLine(line);
 
-            if(aLine.index(0).equals("open"))
+            boolean lock = false;
+            // open logic
+            if(aLine.index(0).equals("open")){
+                // for concatinate
+                // fo example:
+                // input = open "C:\Temp\another
+                // but we lost file.xml"
+                // so, here is why i use ArrayList
+                // https://www.programiz.com/java-programming/arraylist
+                ArrayList<String> arrayList = new ArrayList<>();
+
                 for(int i = 1; i < aLine.countOfWords(); i++)
                     arrayList.add(aLine.index(i));
 
+                // https://docs.vultr.com/java/standard-library/java/lang/String/join
+                String result = String.join(" ", arrayList);
+                System.out.println(result);
 
-            for(int i = 0; i < arrayList.size(); i++)
-                System.out.println(arrayList.get(i));
+                // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
 
-            // https://docs.vultr.com/java/standard-library/java/lang/String/join
-            String result = String.join(" ", arrayList);
-            System.out.println(result);
+
+            }
+            // close logic
+            else if (aLine.index(0).equals("close")) {
+                
+            }
+            // save logic
+            else if (aLine.index(0).equals("save")) {
+
+            }
+            // saveas logic
+            else if (aLine.index(0).equals("saveas")) {
+                // for concatinate
+                // fo example:
+                // input = open "C:\Temp\another
+                // but we lost file.xml"
+                // so, here is why i use ArrayList
+                // https://www.programiz.com/java-programming/arraylist
+                ArrayList<String> arrayList = new ArrayList<>();
+
+                for(int i = 1; i < aLine.countOfWords(); i++)
+                    arrayList.add(aLine.index(i));
+
+                // https://docs.vultr.com/java/standard-library/java/lang/String/join
+                String result = String.join(" ", arrayList);
+                System.out.println(result);
+
+                // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
+            }
+            // help logic
+            else if (aLine.index(0).equals("help")) {
+                System.out.println("The following commands are supported:\n" +
+                        "open <file> opens <file>\n" +
+                        "close closes currently opened file\n" +
+                        "save saves the currently open file\n" +
+                        "saveas <file> saves the currently open file in <file>\n" +
+                        "help prints this information\n" +
+                        "exit exists the program");
+            }
+            // exit logic
+            else if (aLine.index(0).equals("exit")) {
+                System.out.println("Exiting the program...");
+                System.exit(0);
+            }
+
+
         }
     }
 }
