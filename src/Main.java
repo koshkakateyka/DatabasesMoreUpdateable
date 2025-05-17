@@ -32,7 +32,9 @@ public class Main {
 
                 // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
                 OpenFile openFile = new OpenFile(filePath);
-                openFile.load();
+                /*String data =*/ openFile.output();
+
+//                System.out.println(data);
 
 
             }
