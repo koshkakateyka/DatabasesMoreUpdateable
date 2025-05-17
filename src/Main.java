@@ -1,25 +1,33 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String[] a;
+        // for concatinate
+        // fo example:
+        // input = open "C:\Temp\another
+        // but we lost file.xml"
+        // so, here is why i use ArrayList
+        // https://www.programiz.com/java-programming/arraylist
+        ArrayList<String> arrayList = new ArrayList<>();
 
         // main loop of cmd work
         while (true) {
             String line = scanner.nextLine();
             AdvancedLine aLine = new AdvancedLine(line);
 
-            // StringBuilder append() Method in Java(((
-            // i wanna use another method
             if(aLine.index(0).equals("open"))
                 for(int i = 1; i < aLine.countOfWords(); i++)
-                    if(aLine.countOfWords() < 2)
-                        System.out.println(aLine.index(i));
-                    else
-                        System.out.println(aLine.index(i));
+                    arrayList.add(aLine.index(i));
 
 
+            for(int i = 0; i < arrayList.size(); i++)
+                System.out.println(arrayList.get(i));
+
+            // https://docs.vultr.com/java/standard-library/java/lang/String/join
+            String result = String.join(" ", arrayList);
+            System.out.println(result);
         }
     }
 }
