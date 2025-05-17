@@ -12,6 +12,8 @@ public class Main {
             AdvancedLine aLine = new AdvancedLine(line);
 
             boolean lock = false;
+
+            // after all, i wanna add Class MyCmd here
             // open logic
             if(aLine.index(0).equals("open")){
                 // for concatinate
