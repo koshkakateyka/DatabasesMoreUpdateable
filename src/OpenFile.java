@@ -28,9 +28,7 @@ public class OpenFile {
             System.out.println("Can't open/find this path: " + filePath);
         }
     }
-
     public void output(/*int iindex*/){
 
     }
-
 }

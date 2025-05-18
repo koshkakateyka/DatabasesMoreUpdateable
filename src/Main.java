@@ -1,35 +1,20 @@
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
         // beside Scanner, the same things are here
         KeyboardReader keyboardReader = new KeyboardReader();
         boolean open = false;
-        String filePath = "";
-
-        String line = keyboardReader.getKeyboardInput();
-        AdvancedLine aLine = new AdvancedLine(line);
-        MyCmd myCmd = new MyCmd(aLine, filePath, true);
 
         // main loop of cmd work
         while (true) {
-            if(aLine.index(0).equals("open")){
-                open = true;
-                myCmd.open(true);
-                open = false;
-            }
-//            else if (open == true)
-            else if (aLine.index(0).equals("close")){
-                open = false;
-                myCmd.close(false);
-            }
+            String line = keyboardReader.getKeyboardInput();
+            AdvancedLine aLine = new AdvancedLine(line);
 
+            MyCmd myCmd = new MyCmd(aLine);
 
-
-            else if (aLine.index(0).equals("save"))
-                myCmd.save();
-            else if (aLine.index(0).equals("saveas"))
-                myCmd.saveas();
+            myCmd.open();
+            myCmd.close();
+            myCmd.save();
+            myCmd.saveas();
             myCmd.help();
             myCmd.exit();
         }

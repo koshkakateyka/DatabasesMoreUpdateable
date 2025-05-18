@@ -1,16 +1,15 @@
 // https://runestone.academy/ns/books/published/javajavajava/a-command-line-interface.html
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
 public class KeyboardReader {
-    // Attribute
     private BufferedReader reader;
 
-    // Constructor
     public KeyboardReader() {
         reader = new BufferedReader(new InputStreamReader(System.in));
     }
 
-    // Getters
     public String getKeyboardInput() {
         return readKeyboard();
     }
@@ -23,7 +22,6 @@ public class KeyboardReader {
         return Double.parseDouble(readKeyboard());
     }
 
-    // Setters
     public void prompt(String s) {
         System.out.print(s);
     }

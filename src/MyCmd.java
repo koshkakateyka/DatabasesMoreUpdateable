@@ -3,22 +3,20 @@ import java.util.ArrayList;
 public class MyCmd {
     // beside Scanner, the same things are here
     private KeyboardReader keyboardReader = new KeyboardReader();
+    private AdvancedLine aLine;
+    private String filePath;
+    private static boolean oopen;
 
-    private String line = keyboardReader.getKeyboardInput();
-    private AdvancedLine aLine = new AdvancedLine(line);
-
-    private boolean open = false; // bullshit
-    private String filePath = "";
-
-    MyCmd(AdvancedLine aLine, String filePath, boolean open){
-        this.open = open; // bullshit
-        this.filePath = filePath;
+    MyCmd(AdvancedLine aLine){
+        this.aLine = aLine;
     }
 
     // open logic
-    public void open(boolean open){
-        if (open == true) {
-            open = true;
+    public void open(){
+        if(aLine.index(0).equals("open")){
+            oopen = true;
+
+
             // for concatinate
             // fo example:
             // input = open "C:\Temp\another
@@ -34,33 +32,23 @@ public class MyCmd {
             // never use one quote like that: open 'filePath'
             filePath = String.join(" ", arrayList).replaceAll("\"", "");
 
-            System.out.println(filePath);
-
             // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
             OpenFile openFile = new OpenFile(filePath);
-            /*String data =*/
             openFile.output();
-
-            //System.out.println(data);
-        }
-        else if (open == false){
-            System.out.println("");
         }
     }
 
     // close logic
-    public void close(boolean open){
-        if (open == true) {
-            // save the data and close(like, you can't use again opened file, because you are close the file)
-            // some logic here about close,
+    public void close(){
+        if(aLine.index(0).equals("close") && oopen == true)
+        // save the data and close(like, you can't use again opened file, because you are close the file)
+        // some logic here about close,
             System.out.println("Successfully closed " + filePath);
-        }
-        else if (open == false){
+        else if (aLine.index(0).equals("close") && oopen == false)
             System.out.println("You can't close any file, because you never open anything, use it first:" + "\n" +
-                    "open <file>" + "\n" +
-                    "then: " + "\n" +
-                    "close" + "\n");
-        }
+                        "open <file>" + "\n" +
+                        "then: " + "\n" +
+                        "close" + "\n");
     }
 
     // save logic
@@ -93,16 +81,13 @@ public class MyCmd {
             // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
             OpenFile openFile = new OpenFile(filePath);
             /*String data =*/ openFile.output();
-
 //                System.out.println(data);
-
-
         }
     }
 
     // help logic
     public void help(){
-        if (aLine.index(0).equals("help")) {
+        if (aLine.index(0).equals("help"))
             System.out.println("The following commands are supported:\n" +
                     "open <file> opens <file>\n" +
                     "close closes currently opened file\n" +
@@ -110,7 +95,6 @@ public class MyCmd {
                     "saveas <file> saves the currently open file in <file>\n" +
                     "help prints this information\n" +
                     "exit exists the program");
-        }
     }
 
     // exit logic
