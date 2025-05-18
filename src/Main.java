@@ -7,14 +7,29 @@ public class Main {
         boolean open = false;
         String filePath = "";
 
-        MyCmd myCmd = new MyCmd(true, filePath);
+        String line = keyboardReader.getKeyboardInput();
+        AdvancedLine aLine = new AdvancedLine(line);
+        MyCmd myCmd = new MyCmd(aLine, filePath, true);
 
         // main loop of cmd work
         while (true) {
-            myCmd.open();
-            myCmd.close();
-            myCmd.save();
-            myCmd.saveas();
+            if(aLine.index(0).equals("open")){
+                open = true;
+                myCmd.open(true);
+                open = false;
+            }
+//            else if (open == true)
+            else if (aLine.index(0).equals("close")){
+                open = false;
+                myCmd.close(false);
+            }
+
+
+
+            else if (aLine.index(0).equals("save"))
+                myCmd.save();
+            else if (aLine.index(0).equals("saveas"))
+                myCmd.saveas();
             myCmd.help();
             myCmd.exit();
         }

@@ -10,14 +10,14 @@ public class MyCmd {
     private boolean open = false; // bullshit
     private String filePath = "";
 
-    public MyCmd(boolean open, String filePath){
+    MyCmd(AdvancedLine aLine, String filePath, boolean open){
         this.open = open; // bullshit
         this.filePath = filePath;
     }
 
     // open logic
-    public void open(){
-        if(aLine.index(0).equals("open")){
+    public void open(boolean open){
+        if (open == true) {
             open = true;
             // for concatinate
             // fo example:
@@ -27,33 +27,33 @@ public class MyCmd {
             // https://www.programiz.com/java-programming/arraylist
             ArrayList<String> arrayList = new ArrayList<>();
 
-            for(int i = 1; i < aLine.countOfWords(); i++)
+            for (int i = 1; i < aLine.countOfWords(); i++)
                 arrayList.add(aLine.index(i));
 
             // https://docs.vultr.com/java/standard-library/java/lang/String/join
             // never use one quote like that: open 'filePath'
-            filePath = String.join(" ", arrayList).replaceAll("\"","");
+            filePath = String.join(" ", arrayList).replaceAll("\"", "");
 
             System.out.println(filePath);
 
             // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
             OpenFile openFile = new OpenFile(filePath);
-            /*String data =*/ openFile.output();
+            /*String data =*/
+            openFile.output();
 
-//                System.out.println(data);
-
-
+            //System.out.println(data);
+        }
+        else if (open == false){
+            System.out.println("");
         }
     }
 
     // close logic
-    public void close(){
+    public void close(boolean open){
         if (open == true) {
-            if (aLine.index(0).equals("close")) {
-                // save the data and close(like, you can't use again opened file, because you are close the file)
-                // some logic here about close,
-                System.out.println("Successfully closed " + filePath);
-            }
+            // save the data and close(like, you can't use again opened file, because you are close the file)
+            // some logic here about close,
+            System.out.println("Successfully closed " + filePath);
         }
         else if (open == false){
             System.out.println("You can't close any file, because you never open anything, use it first:" + "\n" +
