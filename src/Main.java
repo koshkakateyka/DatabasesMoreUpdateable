@@ -1,22 +1,25 @@
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
         // beside Scanner, the same things are here
         KeyboardReader keyboardReader = new KeyboardReader();
-        boolean open = false;
 
         // main loop of cmd work
         while (true) {
-            String line = keyboardReader.getKeyboardInput();
-            AdvancedLine aLine = new AdvancedLine(line);
+//            String line = keyboardReader.getKeyboardInput();
+//            AdvancedLine aLine = new AdvancedLine(line);
 
-            MyCmd myCmd = new MyCmd(aLine);
+            Command command = new Exit();
+            command.execute();
 
-            myCmd.open();
-            myCmd.close();
-            myCmd.save();
-            myCmd.saveas();
-            myCmd.help();
-            myCmd.exit();
+
+//            myCmd.open();
+//            myCmd.close();
+//            myCmd.save();
+//            myCmd.saveas();
+//            myCmd.help();
+//            myCmd.exit();
         }
     }
 }

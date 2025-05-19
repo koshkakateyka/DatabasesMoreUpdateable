@@ -1,7 +1,7 @@
 public class AdvancedLine {
     private String str;
 
-    AdvancedLine(String str){
+    public AdvancedLine(String str){
         this.str = str;
     }
 
