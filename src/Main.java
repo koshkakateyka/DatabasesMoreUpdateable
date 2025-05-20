@@ -1,29 +1,12 @@
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-
 public class Main {
-    public static void main(String[] args) throws IOException {
-//        try {
-//            BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
-//
-//            log.write("This will be printed on stdout!\n");
-//
-//            log.flush();    // my main mistake and stuck here
-//                            // do not forget this command
-//        }
-//        catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
+    public static void main(String[] args) {
         // beside Scanner, the same things are here
         KeyboardReader keyboardReader = new KeyboardReader();
+        KeyboardWriter keyboardWriter = new KeyboardWriter();
 
         String filePath = "";
+//        String fileName = "";
         boolean oopen = false;
-
-        KeyboardWriter keyboardWriter = new KeyboardWriter();
-        keyboardWriter.write("This will be printed on stdout!\n");
 
         // main loop of cmd work
         while (true) {
@@ -31,27 +14,33 @@ public class Main {
             AdvancedLine advancedLine = new AdvancedLine(line);
 
             if(advancedLine.byIndex(0).equals("open")){
-                Open command = new Open(keyboardReader, advancedLine, filePath, oopen);
+                Open command = new Open(keyboardReader, keyboardWriter, advancedLine, filePath, oopen);
                 command.execute();
                 oopen = command.isOopen();
-            } else if (advancedLine.byIndex(0).equals("close")) {
-                Close command = new Close(keyboardReader, advancedLine, filePath, oopen);
+            }
+            else if (advancedLine.byIndex(0).equals("close")) {
+                Close command = new Close(keyboardReader, keyboardWriter, advancedLine, filePath, oopen);
                 command.execute();
                 oopen = command.isOopen();
-            } else if (advancedLine.byIndex(0).equals("save")) {
-                Save command = new Save(keyboardReader, advancedLine, filePath, oopen);
+            }
+            else if (advancedLine.byIndex(0).equals("save")) {
+                Save command = new Save(keyboardReader, keyboardWriter, advancedLine, filePath, oopen);
                 command.execute();
-            } else if (advancedLine.byIndex(0).equals("saveas")) {
-//                SaveAs command = new SaveAs(keyboardReader, advancedLine, filePath, oopen);
-//                command.execute();
-            } else if (advancedLine.byIndex(0).equals("help")) {
-                Help command = new Help();
+            }
+            else if (advancedLine.byIndex(0).equals("saveas")) {
+                SaveAs command = new SaveAs(keyboardReader, keyboardWriter, advancedLine, filePath, oopen);
                 command.execute();
-            } else if (advancedLine.byIndex(0).equals("exit")) {
-//                Command command = new Exit();
-//                command.execute();
-            } else {
-                keyboardReader.display("Unknown started command" + advancedLine.byIndex(0));
+            }
+            else if (advancedLine.byIndex(0).equals("help")) {
+                Help command = new Help(keyboardReader, keyboardWriter);
+                command.execute();
+            }
+            else if (advancedLine.byIndex(0).equals("exit")) {
+                Command command = new Exit(keyboardWriter);
+                command.execute();
+            }
+            else {
+                keyboardWriter.write("Unknown command: " + advancedLine.byIndex(0));
             }
         }
     }

@@ -7,13 +7,15 @@ import java.util.ArrayList;
 
 public class SaveAs implements Command {
     private KeyboardReader keyboardReader;
+    private KeyboardWriter keyboardWriter;
     private AdvancedLine advancedLine;
 
     private String filePath = "";
     private boolean oopen;
 
-    public SaveAs(KeyboardReader keyboardReader, AdvancedLine advancedLine, String filePath, boolean oopen){
+    public SaveAs(KeyboardReader keyboardReader, KeyboardWriter keyboardWriter, AdvancedLine advancedLine, String filePath, boolean oopen){
         this.keyboardReader = keyboardReader;
+        this.keyboardWriter = keyboardWriter;
         this.advancedLine = advancedLine;
         this.filePath = filePath;
         this.oopen = oopen;
@@ -53,13 +55,13 @@ public class SaveAs implements Command {
                 bufferedReader.close();
             } catch (IOException e) {
                 // i can't write the name of file, only the path
-                keyboardReader.display("Can't open/find this path: " + filePath + "\n");
+                keyboardWriter.write("Can't open/find this path: " + filePath + "\n");
             }
 
             oopen = true;
         }
         else {
-            keyboardReader.display("FilePath is empty\n");
+            keyboardWriter.write("FilePath is empty\n");
         }
     }
 

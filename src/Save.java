@@ -2,13 +2,15 @@
 // https://www.baeldung.com/java-command-pattern
 public class Save implements Command {
     private KeyboardReader keyboardReader;
+    private KeyboardWriter keyboardWriter;
     private AdvancedLine advancedLine;
 
     private String filePath = "";
     private boolean oopen;
 
-    public Save(KeyboardReader keyboardReader, AdvancedLine advancedLine, String filePath, boolean oopen){
+    public Save(KeyboardReader keyboardReader, KeyboardWriter keyboardWriter, AdvancedLine advancedLine, String filePath, boolean oopen){
         this.keyboardReader = keyboardReader;
+        this.keyboardWriter = keyboardWriter;
         this.advancedLine = advancedLine;
         this.filePath = filePath;
         this.oopen = oopen;
@@ -17,10 +19,10 @@ public class Save implements Command {
     @Override
     public void execute(){
         if(oopen) {
-            keyboardReader.display("Successfully saved " + filePath + "\n");
+            keyboardWriter.write("Successfully saved " + filePath + "\n");
         }
         else
-            keyboardReader.display("You can't save any file, because you never open anything, use it first:" + "\n" +
+            keyboardWriter.write("You can't save any file, because you never open anything, use it first:" + "\n" +
                     "open <file>" + "\n" +
                     "then: " + "\n" +
                     "save" + "\n");

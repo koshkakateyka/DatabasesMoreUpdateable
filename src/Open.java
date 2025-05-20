@@ -7,13 +7,15 @@ import java.util.ArrayList;
 
 public class Open implements Command {
     private KeyboardReader keyboardReader;
+    private KeyboardWriter keyboardWriter;
     private AdvancedLine advancedLine;
 
     private String filePath = "";
     private boolean oopen;
 
-    public Open(KeyboardReader keyboardReader, AdvancedLine advancedLine, String filePath, boolean oopen){
+    public Open(KeyboardReader keyboardReader, KeyboardWriter keyboardWriter, AdvancedLine advancedLine, String filePath, boolean oopen){
         this.keyboardReader = keyboardReader;
+        this.keyboardWriter = keyboardWriter;
         this.advancedLine = advancedLine;
         this.filePath = filePath;
         this.oopen = oopen;
@@ -37,7 +39,13 @@ public class Open implements Command {
         // never use one quote like that: open 'filePath'
         filePath = String.join(" ", arrayList).replaceAll("\"", "");
 
+
+
         if(!filePath.isEmpty()){
+            FromFilePathToFileName fromFilePathToFileName = new FromFilePathToFileName(filePath);
+
+            fromFilePathToFileName.convert();
+
             // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
             try{
                 BufferedReader bufferedReader;
@@ -51,15 +59,16 @@ public class Open implements Command {
                 }
 
                 bufferedReader.close();
+                keyboardWriter.write("Successfully opened " + filePath + "\n");
             } catch (IOException e) {
                 // i can't write the name of file, only the path
-                keyboardReader.display("Can't open/find this path: " + filePath + "\n");
+                keyboardWriter.write("Can't open/find this path: " + filePath + "\n");
             }
 
             oopen = true;
         }
         else {
-            keyboardReader.display("FilePath is empty\n");
+            keyboardWriter.write("FilePath is empty\n");
         }
     }
 

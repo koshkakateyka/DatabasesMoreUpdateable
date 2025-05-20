@@ -1,11 +1,11 @@
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
 
 public class KeyboardWriter {
 
     private BufferedWriter log;
 
     public KeyboardWriter(){
-
         log = new BufferedWriter(new OutputStreamWriter(System.out));
     }
 
@@ -20,16 +20,4 @@ public class KeyboardWriter {
         }
         return line+"\n";
     }
-
-//    private String readKeyboard() {
-//        String line = "";
-//
-//        try {
-//            line = reader.readLine();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return line;
-//    }
-
 }

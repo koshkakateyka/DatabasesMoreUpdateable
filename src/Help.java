@@ -1,9 +1,15 @@
 public class Help implements Command {
     private KeyboardReader keyboardReader;
+    private KeyboardWriter keyboardWriter;
+
+    public Help(KeyboardReader keyboardReader, KeyboardWriter keyboardWriter) {
+        this.keyboardReader = keyboardReader;
+        this.keyboardWriter = keyboardWriter;
+    }
 
     @Override
     public void execute(){
-        keyboardReader.display("The following commands are supported:\n" +
+        keyboardWriter.write("The following commands are supported:\n" +
                 "open <file> opens <file>\n" +
                 "close closes currently opened file\n" +
                 "save saves the currently open file\n" +

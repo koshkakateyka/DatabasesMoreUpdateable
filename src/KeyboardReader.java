@@ -13,13 +13,13 @@ public class KeyboardReader {
         return readKeyboard();
     }
 
-//    public int getKeyboardInteger() {
-//        return Integer.parseInt(readKeyboard());
-//    }
-//
-//    public double getKeyboardDouble() {
-//        return Double.parseDouble(readKeyboard());
-//    }
+    public int getKeyboardInteger() {
+        return Integer.parseInt(readKeyboard());
+    }
+
+    public double getKeyboardDouble() {
+        return Double.parseDouble(readKeyboard());
+    }
 
     private String readKeyboard() {
         String line = "";
