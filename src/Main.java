@@ -1,25 +1,36 @@
-import javax.swing.*;
-
 public class Main {
     public static void main(String[] args) {
         // beside Scanner, the same things are here
         KeyboardReader keyboardReader = new KeyboardReader();
+        String filePath = "";
+        boolean oopen = false;
 
         // main loop of cmd work
         while (true) {
-//            String line = keyboardReader.getKeyboardInput();
-//            AdvancedLine aLine = new AdvancedLine(line);
+            String line = keyboardReader.getKeyboardInput();
+            AdvancedLine advancedLine = new AdvancedLine(line);
 
-            Command command = new Exit();
-            command.execute();
-
-
-//            myCmd.open();
-//            myCmd.close();
-//            myCmd.save();
-//            myCmd.saveas();
-//            myCmd.help();
-//            myCmd.exit();
+            if(advancedLine.byIndex(0).equals("open")){
+                Open command = new Open(keyboardReader, advancedLine, filePath, oopen);
+                command.execute();
+                oopen = command.isOopen();
+            } else if (advancedLine.byIndex(0).equals("close")) {
+                Close command = new Close(keyboardReader, advancedLine, filePath, oopen);
+                command.execute();
+                oopen = command.isOopen();
+            } else if (advancedLine.byIndex(0).equals("save")) {
+                Save command = new Save(keyboardReader, advancedLine, filePath, oopen);
+                command.execute();
+            } else if (advancedLine.byIndex(0).equals("saveas")) {
+                
+            } else if (advancedLine.byIndex(0).equals("help")) {
+                
+            } else if (advancedLine.byIndex(0).equals("exit")) {
+                Command command = new Exit();
+                command.execute();
+            } else {
+                keyboardReader.display("Unknown started command" + advancedLine.byIndex(0));
+            }
         }
     }
 }
