@@ -1,33 +1,39 @@
 import java.io.*;
 
 public class KeyboardWriter {
-    private String line;
+    private BufferedWriter writer;
 
-    public KeyboardWriter(String line){
-        this.line = line;
+    public KeyboardWriter() {
+        writer = new BufferedWriter(new OutputStreamWriter(System.out));
     }
 
-    public String write(){
-        try {
-            BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
+//    private String line;
+//
+//    public KeyboardWriter(String line){
+//        this.line = line;
+//    }
 
-            log.write(line+"\n");
+    public void write(){
+        String line = "123";
+
+        try {
+            writer.write(line);
         }
-        catch (Exception e) {
+        catch (IOException e) {
             e.printStackTrace();
         }
-        return line+"\n";
     }
 
-//    private String readKeyboard() {
-//        String line = "";
+//    private
 //
+//
+//
+//    private void writeKeyboard() {
 //        try {
-//            line = reader.readLine();
+//            log.write(line+"\n");
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-//        return line;
 //    }
 
 }

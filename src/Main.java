@@ -6,11 +6,24 @@ public class Main {
     public static void main(String[] args) throws IOException {
         // beside Scanner, the same things are here
         KeyboardReader keyboardReader = new KeyboardReader();
-        KeyboardWriter keyboardWriter = new KeyboardWriter("This will be printed on stdout!\n");
-        keyboardWriter.write();
+//        KeyboardWriter keyboardWriter = new KeyboardWriter();
+//        keyboardWriter.write();
 
+//        KeyboardWriter keyboardWriter = new KeyboardWriter();
+//
+////        keyboardWriter.write();
+//
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+        writer.write("123");
+//        keyboardWriter.write();
 //        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-//        writer.write();
+//        writer.write("123");
+//        try {
+//            writer.write("123");
+//        }
+//        catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         String filePath = "";
         boolean oopen = false;
