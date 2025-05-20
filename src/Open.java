@@ -42,9 +42,10 @@ public class Open implements Command {
 
 
         if(!filePath.isEmpty()){
-            FromFilePathToFileName fromFilePathToFileName = new FromFilePathToFileName(filePath);
+            keyboardWriter.write("Successfully opened " + filePath + "\n");
 
-            fromFilePathToFileName.convert();
+            FromFilePathToFileName fromFilePathToFileName = new FromFilePathToFileName();
+            String fileName = fromFilePathToFileName.convert(filePath);
 
             // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
             try{
@@ -57,14 +58,11 @@ public class Open implements Command {
                     //                arrayList.add()
                     //                return data[iindex];
                 }
-
                 bufferedReader.close();
-                keyboardWriter.write("Successfully opened " + filePath + "\n");
             } catch (IOException e) {
                 // i can't write the name of file, only the path
-                keyboardWriter.write("Can't open/find this path: " + filePath + "\n");
+                keyboardWriter.write("Can't open/find this file: " + filePath + "\n");
             }
-
             oopen = true;
         }
         else {

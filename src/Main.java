@@ -2,6 +2,8 @@ public class Main {
     public static void main(String[] args) {
         // beside Scanner, the same things are here
         KeyboardReader keyboardReader = new KeyboardReader();
+
+        // beside System.out.println();
         KeyboardWriter keyboardWriter = new KeyboardWriter();
 
         String filePath = "";
