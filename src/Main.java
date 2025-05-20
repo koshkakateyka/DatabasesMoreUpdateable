@@ -1,9 +1,21 @@
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // beside Scanner, the same things are here
         KeyboardReader keyboardReader = new KeyboardReader();
+        KeyboardWriter keyboardWriter = new KeyboardWriter("This will be printed on stdout!\n");
+        keyboardWriter.write();
+
+//        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
+//        writer.write();
+
         String filePath = "";
         boolean oopen = false;
+
+
 
         // main loop of cmd work
         while (true) {
@@ -22,12 +34,14 @@ public class Main {
                 Save command = new Save(keyboardReader, advancedLine, filePath, oopen);
                 command.execute();
             } else if (advancedLine.byIndex(0).equals("saveas")) {
-                
-            } else if (advancedLine.byIndex(0).equals("help")) {
-                
-            } else if (advancedLine.byIndex(0).equals("exit")) {
-                Command command = new Exit();
+                SaveAs command = new SaveAs(keyboardReader, advancedLine, filePath, oopen);
                 command.execute();
+            } else if (advancedLine.byIndex(0).equals("help")) {
+                Help command = new Help();
+                command.execute();
+            } else if (advancedLine.byIndex(0).equals("exit")) {
+//                Command command = new Exit();
+//                command.execute();
             } else {
                 keyboardReader.display("Unknown started command" + advancedLine.byIndex(0));
             }

@@ -1,10 +1,15 @@
 // https://runestone.academy/ns/books/published/javajavajava/a-command-line-interface.html
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
+// https://stackoverflow.com/questions/4405078/how-to-write-to-standard-output-using-bufferedwriter
+import java.io.*;
 
 public class KeyboardReader {
+    private BufferedWriter writer;
     private BufferedReader reader;
+
+//    public Writer KeyboardWriter() {
+//        writer = new BufferedWriter(new OutputStreamWriter(System.out));
+//        return writer;
+//    }
 
     public KeyboardReader() {
         reader = new BufferedReader(new InputStreamReader(System.in));
@@ -40,4 +45,17 @@ public class KeyboardReader {
         }
         return line;
     }
+
+    String writeKeyboard(String line){
+        try {
+            writer.write(line+"\n");
+            writer.flush();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return writer.toString();
+    }
+
+
 }
