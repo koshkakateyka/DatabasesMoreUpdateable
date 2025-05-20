@@ -15,12 +15,12 @@ public class AdvancedLine {
     }
 
     // https://stackoverflow.com/questions/7899525/how-to-split-a-string-by-space
-    public String byIndex(int iindex){
+    public String byIndex(int index){
         // trim + split = delete no needed spaces
         // and divide our whole sentence to the every single word
         String[] splitStr = str.trim().split("\\s+");
 
-        return splitStr[iindex];
+        return splitStr[index];
     }
 
 

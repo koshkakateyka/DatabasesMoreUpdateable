@@ -6,34 +6,34 @@ public class Close implements Command{
     private AdvancedLine advancedLine;
 
     private String filePath = "";
-    private boolean oopen;
+    private boolean open;
 
-    public Close(KeyboardReader keyboardReader, KeyboardWriter keyboardWriter, AdvancedLine advancedLine, String filePath, boolean oopen){
+    public Close(KeyboardReader keyboardReader, KeyboardWriter keyboardWriter, AdvancedLine advancedLine, String filePath, boolean open){
         this.keyboardReader = keyboardReader;
         this.keyboardWriter = keyboardWriter;
         this.advancedLine = advancedLine;
         this.filePath = filePath;
-        this.oopen = oopen;
+        this.open = open;
     }
 
     @Override
     public void execute(){
-        if(oopen) {
-            keyboardWriter.write("Successfully closed " + filePath + "\n");
-            oopen = false;
+        if(open) {
+            keyboardWriter.writeln("Successfully closed " + filePath);
+            open = false;
         }
         else
-            keyboardWriter.write("You can't close any file, because you never open anything, use it first:" + "\n" +
+            keyboardWriter.writeln("You can't close any file, because you never open anything, use it first:" + "\n" +
                     "open <file>" + "\n" +
                     "then: " + "\n" +
-                    "close" + "\n");
+                    "close");
     }
 
-    public boolean isOopen() {
-        return oopen;
+    public boolean isOpen() {
+        return open;
     }
 
-    public void setOopen(boolean oopen) {
-        this.oopen = oopen;
+    public void setOpen(boolean open) {
+        this.open = open;
     }
 }

@@ -55,13 +55,13 @@ public class SaveAs implements Command {
                 bufferedReader.close();
             } catch (IOException e) {
                 // i can't write the name of file, only the path
-                keyboardWriter.write("Can't open/find this path: " + filePath + "\n");
+                keyboardWriter.writeln("Can't open/find this path: " + filePath + "\n");
             }
 
             oopen = true;
         }
         else {
-            keyboardWriter.write("FilePath is empty\n");
+            keyboardWriter.writeln("FilePath is empty\n");
         }
     }
 

@@ -19,10 +19,10 @@ public class Save implements Command {
     @Override
     public void execute(){
         if(oopen) {
-            keyboardWriter.write("Successfully saved " + filePath + "\n");
+            keyboardWriter.writeln("Successfully saved " + filePath + "\n");
         }
         else
-            keyboardWriter.write("You can't save any file, because you never open anything, use it first:" + "\n" +
+            keyboardWriter.writeln("You can't save any file, because you never open anything, use it first:" + "\n" +
                     "open <file>" + "\n" +
                     "then: " + "\n" +
                     "save" + "\n");

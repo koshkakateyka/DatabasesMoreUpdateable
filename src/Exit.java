@@ -9,7 +9,6 @@ public class Exit implements Command{
 
     @Override
     public void execute(){
-        keyboardWriter.write("Exiting the program...");
-        System.exit(0);
+        keyboardWriter.writeln("Exiting the program...");
     }
 }

@@ -9,16 +9,21 @@ public class Open implements Command {
     private KeyboardReader keyboardReader;
     private KeyboardWriter keyboardWriter;
     private AdvancedLine advancedLine;
+    private String fileName;
+    private ArrayList<String> arrayList1;
 
     private String filePath = "";
-    private boolean oopen;
+    private boolean open;
 
-    public Open(KeyboardReader keyboardReader, KeyboardWriter keyboardWriter, AdvancedLine advancedLine, String filePath, boolean oopen){
+    public Open(KeyboardReader keyboardReader, KeyboardWriter keyboardWriter, AdvancedLine advancedLine,
+                String filePath, boolean open, String fileName, ArrayList<String> arrayList1){
         this.keyboardReader = keyboardReader;
         this.keyboardWriter = keyboardWriter;
         this.advancedLine = advancedLine;
         this.filePath = filePath;
-        this.oopen = oopen;
+        this.open = open;
+        this.fileName = fileName;
+        this.arrayList1 = arrayList1;
     }
 
     @Override
@@ -42,39 +47,56 @@ public class Open implements Command {
 
 
         if(!filePath.isEmpty()){
-            keyboardWriter.write("Successfully opened " + filePath + "\n");
+            // keyboardWriter.writeln("Successfully opened " + filePath + "\n");
 
             FromFilePathToFileName fromFilePathToFileName = new FromFilePathToFileName();
             String fileName = fromFilePathToFileName.convert(filePath);
+
+
 
             // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
             try{
                 BufferedReader bufferedReader;
                 String data;
-                bufferedReader = new BufferedReader(new FileReader(filePath));
 
+                bufferedReader = new BufferedReader(new FileReader(filePath));
+                keyboardWriter.writeln("Successfully opened " + fileName);
+
+                arrayList1 = new ArrayList<>();
+                // READ
                 while ((data = bufferedReader.readLine()) != null){
-                    System.out.println(data);
-                    //                arrayList.add()
-                    //                return data[iindex];
+                    arrayList1.add(data);
                 }
+
                 bufferedReader.close();
             } catch (IOException e) {
-                // i can't write the name of file, only the path
-                keyboardWriter.write("Can't open/find this file: " + filePath + "\n");
+                keyboardWriter.writeln("Can't open: " + fileName + " " + "\n" +
+                        "or find the file by this path: " + filePath);
             }
-            oopen = true;
+            open = true;
         }
         else {
-            keyboardWriter.write("FilePath is empty\n");
+            keyboardWriter.writeln("FilePath is empty");
         }
     }
 
-    public boolean isOopen() {
-        return oopen;
+    public boolean isOpen() {
+        return open;
     }
 
-    public void setOopen(boolean oopen) {
-        this.oopen = oopen;
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public ArrayList<String> getArrayList1() {
+        return arrayList1;
     }
 }

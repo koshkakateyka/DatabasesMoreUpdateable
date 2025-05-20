@@ -9,7 +9,7 @@ public class Help implements Command {
 
     @Override
     public void execute(){
-        keyboardWriter.write("The following commands are supported:\n" +
+        keyboardWriter.writeln("The following commands are supported:\n" +
                 "open <file> opens <file>\n" +
                 "close closes currently opened file\n" +
                 "save saves the currently open file\n" +
