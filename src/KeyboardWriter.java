@@ -1,39 +1,35 @@
 import java.io.*;
 
 public class KeyboardWriter {
-    private BufferedWriter writer;
 
-    public KeyboardWriter() {
-        writer = new BufferedWriter(new OutputStreamWriter(System.out));
+    private BufferedWriter log;
+
+    public KeyboardWriter(){
+
+        log = new BufferedWriter(new OutputStreamWriter(System.out));
     }
 
-//    private String line;
-//
-//    public KeyboardWriter(String line){
-//        this.line = line;
-//    }
-
-    public void write(){
-        String line = "123";
-
+    public String write(String line){
+        // https://stackoverflow.com/questions/4405078/how-to-write-to-standard-output-using-bufferedwriter
         try {
-            writer.write(line);
+            log.write(line+"\n");
+            log.flush();
         }
-        catch (IOException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
+        return line+"\n";
     }
 
-//    private
+//    private String readKeyboard() {
+//        String line = "";
 //
-//
-//
-//    private void writeKeyboard() {
 //        try {
-//            log.write(line+"\n");
+//            line = reader.readLine();
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+//        return line;
 //    }
 
 }

@@ -4,31 +4,26 @@ import java.io.OutputStreamWriter;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        // beside Scanner, the same things are here
-        KeyboardReader keyboardReader = new KeyboardReader();
-//        KeyboardWriter keyboardWriter = new KeyboardWriter();
-//        keyboardWriter.write();
-
-//        KeyboardWriter keyboardWriter = new KeyboardWriter();
-//
-////        keyboardWriter.write();
-//
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-        writer.write("123");
-//        keyboardWriter.write();
-//        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
-//        writer.write("123");
 //        try {
-//            writer.write("123");
+//            BufferedWriter log = new BufferedWriter(new OutputStreamWriter(System.out));
+//
+//            log.write("This will be printed on stdout!\n");
+//
+//            log.flush();    // my main mistake and stuck here
+//                            // do not forget this command
 //        }
-//        catch (IOException e) {
+//        catch (Exception e) {
 //            e.printStackTrace();
 //        }
+
+        // beside Scanner, the same things are here
+        KeyboardReader keyboardReader = new KeyboardReader();
 
         String filePath = "";
         boolean oopen = false;
 
-
+        KeyboardWriter keyboardWriter = new KeyboardWriter();
+        keyboardWriter.write("This will be printed on stdout!\n");
 
         // main loop of cmd work
         while (true) {
@@ -47,8 +42,8 @@ public class Main {
                 Save command = new Save(keyboardReader, advancedLine, filePath, oopen);
                 command.execute();
             } else if (advancedLine.byIndex(0).equals("saveas")) {
-                SaveAs command = new SaveAs(keyboardReader, advancedLine, filePath, oopen);
-                command.execute();
+//                SaveAs command = new SaveAs(keyboardReader, advancedLine, filePath, oopen);
+//                command.execute();
             } else if (advancedLine.byIndex(0).equals("help")) {
                 Help command = new Help();
                 command.execute();

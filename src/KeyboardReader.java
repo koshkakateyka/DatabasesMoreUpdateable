@@ -13,21 +13,13 @@ public class KeyboardReader {
         return readKeyboard();
     }
 
-    public int getKeyboardInteger() {
-        return Integer.parseInt(readKeyboard());
-    }
-
-    public double getKeyboardDouble() {
-        return Double.parseDouble(readKeyboard());
-    }
-
-    public void prompt(String s) {
-        System.out.print(s);
-    }
-
-    public void display(String s) {
-        System.out.print(s);
-    }
+//    public int getKeyboardInteger() {
+//        return Integer.parseInt(readKeyboard());
+//    }
+//
+//    public double getKeyboardDouble() {
+//        return Double.parseDouble(readKeyboard());
+//    }
 
     private String readKeyboard() {
         String line = "";
@@ -39,17 +31,4 @@ public class KeyboardReader {
         }
         return line;
     }
-
-//    String writeKeyboard(String line){
-//        try {
-//            writer.write(line+"\n");
-//            writer.flush();
-//        }
-//        catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return writer.toString();
-//    }
-
-
 }
