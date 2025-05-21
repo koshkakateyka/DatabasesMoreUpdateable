@@ -3,4 +3,9 @@ public class Delete implements Command{
     public void execute(){
 
     }
+
+    @Override
+    public void load(){
+
+    }
 }

@@ -65,6 +65,11 @@ public class SaveAs implements Command {
         }
     }
 
+    @Override
+    public void load(){
+
+    }
+
     public boolean isOopen() {
         return oopen;
     }

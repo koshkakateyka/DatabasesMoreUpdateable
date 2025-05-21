@@ -6,35 +6,47 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Open implements Command {
-    private KeyboardReader keyboardReader;
-    private KeyboardWriter keyboardWriter;
-    private AdvancedLine advancedLine;
-    private String fileName;
-    private ArrayList<String> arrayList1;
-
-    private String filePath = "";
-    private boolean open;
-
-    public Open(KeyboardReader keyboardReader, KeyboardWriter keyboardWriter, AdvancedLine advancedLine,
-                String filePath, boolean open, String fileName, ArrayList<String> arrayList1){
-        this.keyboardReader = keyboardReader;
-        this.keyboardWriter = keyboardWriter;
-        this.advancedLine = advancedLine;
-        this.filePath = filePath;
-        this.open = open;
-        this.fileName = fileName;
-        this.arrayList1 = arrayList1;
-    }
+//    private KeyboardReader keyboardReader;
+//    private KeyboardWriter keyboardWriter;
+//    private AdvancedLine advancedLine;
+//    private ArrayList<String> arrayList;
+//    private String fileName;
+//
+//
+//    private String filePath = "";
+//    private boolean open;
+//
+//    public Open(KeyboardReader keyboardReader, KeyboardWriter keyboardWriter, AdvancedLine advancedLine,
+//                String filePath, boolean open, String fileName, ArrayList<String> arrayList){
+//        this.keyboardReader = keyboardReader;
+//        this.keyboardWriter = keyboardWriter;
+//        this.advancedLine = advancedLine;
+//        this.arrayList = arrayList;
+//        this.filePath = filePath;
+//        this.open = open;
+//        this.fileName = fileName;
+//
+//    }
 
     @Override
     public void execute(){
-        // for concatinate
-        // fo example:
-        // input = open "C:\Temp\another
-        // but we lost file.xml"
-        // so, here is why i use ArrayList
-        // https://www.programiz.com/java-programming/arraylist
+
+    }
+
+    @Override
+    public void load(){
+        KeyboardReader keyboardReader = new KeyboardReader();
+        KeyboardWriter keyboardWriter = new KeyboardWriter();
         ArrayList<String> arrayList = new ArrayList<>();
+
+        boolean open = false;
+        String filePath = "";
+//        String fileName = "";
+
+        String line = "";
+
+        line = keyboardReader.getKeyboardInput();
+        AdvancedLine advancedLine = new AdvancedLine(line);
 
         // counting tokens after command open
         for (int i = 1; i < advancedLine.sizeOf(); i++)
@@ -44,59 +56,47 @@ public class Open implements Command {
         // never use one quote like that: open 'filePath'
         filePath = String.join(" ", arrayList).replaceAll("\"", "");
 
-
-
         if(!filePath.isEmpty()){
-            // keyboardWriter.writeln("Successfully opened " + filePath + "\n");
-
             FromFilePathToFileName fromFilePathToFileName = new FromFilePathToFileName();
             String fileName = fromFilePathToFileName.convert(filePath);
 
-
-
-            // https://programmingfundamental.github.io/courses/docs/object-oriented-programming-1-part/laboratory-exercise-10
             try{
                 BufferedReader bufferedReader;
-                String data;
 
                 bufferedReader = new BufferedReader(new FileReader(filePath));
                 keyboardWriter.writeln("Successfully opened " + fileName);
 
-                arrayList1 = new ArrayList<>();
-                // READ
-                while ((data = bufferedReader.readLine()) != null){
-                    arrayList1.add(data);
-                }
-
                 bufferedReader.close();
             } catch (IOException e) {
                 keyboardWriter.writeln("Can't open: " + fileName + " " + "\n" +
-                        "or find the file by this path: " + filePath);
+                        "or find the file by this path: " + filePath + "\n" +
+                        "If you want to create a file, please, white"+"\n" +
+                        "create \"anyName.xml\"");
             }
             open = true;
         }
         else {
-            keyboardWriter.writeln("FilePath is empty");
+            keyboardWriter.writeln("open <file>");
         }
     }
 
-    public boolean isOpen() {
-        return open;
-    }
-
-    public void setOpen(boolean open) {
-        this.open = open;
-    }
-
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public ArrayList<String> getArrayList1() {
-        return arrayList1;
-    }
+//    public boolean isOpen() {
+//        return open;
+//    }
+//
+//    public void setOpen(boolean open) {
+//        this.open = open;
+//    }
+//
+//    public String getFilePath() {
+//        return filePath;
+//    }
+//
+//    public String getFileName() {
+//        return fileName;
+//    }
+//
+//    public ArrayList<String> getArrayList1() {
+//        return arrayList1;
+//    }
 }

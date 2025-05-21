@@ -3,4 +3,5 @@
 
 public interface Command {
     void execute();
+    void load();
 }

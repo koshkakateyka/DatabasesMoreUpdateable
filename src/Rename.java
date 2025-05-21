@@ -3,4 +3,9 @@ public class Rename implements Command{
     public void execute(){
 
     }
+
+    @Override
+    public void load(){
+
+    }
 }

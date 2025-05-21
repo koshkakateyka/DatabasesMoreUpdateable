@@ -11,4 +11,9 @@ public class Exit implements Command{
     public void execute(){
         keyboardWriter.writeln("Exiting the program...");
     }
+
+    @Override
+    public void load(){
+
+    }
 }

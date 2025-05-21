@@ -3,4 +3,9 @@ public class Print implements Command{
     public void execute(){
 
     }
+
+    @Override
+    public void load(){
+
+    }
 }

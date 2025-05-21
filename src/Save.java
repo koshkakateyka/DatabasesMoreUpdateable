@@ -28,6 +28,11 @@ public class Save implements Command {
                     "save" + "\n");
     }
 
+    @Override
+    public void load(){
+
+    }
+
     public void setOopen(boolean oopen) {
         this.oopen = oopen;
     }

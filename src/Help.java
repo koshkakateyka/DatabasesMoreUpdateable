@@ -18,4 +18,8 @@ public class Help implements Command {
                 "exit exists the program");
     }
 
+    @Override
+    public void load(){
+
+    }
 }

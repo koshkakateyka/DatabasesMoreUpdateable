@@ -29,6 +29,11 @@ public class Close implements Command{
                     "close");
     }
 
+    @Override
+    public void load(){
+
+    }
+
     public boolean isOpen() {
         return open;
     }

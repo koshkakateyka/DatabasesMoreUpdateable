@@ -3,4 +3,9 @@ public class Select implements Command{
     public void execute(){
 
     }
+
+    @Override
+    public void load(){
+
+    }
 }

@@ -3,4 +3,9 @@ public class Aggregate implements Command{
     public void execute(){
 
     }
+
+    @Override
+    public void load(){
+
+    }
 }
