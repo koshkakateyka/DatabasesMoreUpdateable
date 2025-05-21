@@ -1,4 +1,4 @@
-public class Import implements Command{
+public class InnerJoin implements Command{
     @Override
     public void execute(){
 

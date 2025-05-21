@@ -1,4 +1,4 @@
-public class Import implements Command{
+public class Insert implements Command{
     @Override
     public void execute(){
 
